@@ -18,3 +18,16 @@ docker-compose up -d
 ```bash
 docker-compose down
 ```
+## Insérer des données test
+Décomenter la ligne d'insert dans models/index.js
+```bash
+docker-compose build
+docker-compose up -d
+docker-compose down
+```
+Comenter la ligne d'insert dans models/index.js
+```bash
+docker-compose build
+docker-compose up -d
+```
+C'est pas moi qui est choisi...
