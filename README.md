@@ -1,15 +1,20 @@
 # API-FIMU-Docker
 ## Récupérer le projet
-```sh
+```bash
 git clone https://github.com/ArnaudCHEVALME/API-FIMU-Docker.git
+cd API-FIMU-Docker
 ```
 
 ## Créer et remplire le .env
-```sh
+```bash
 cp .env-template .env
 ```
 
 ## Lancer
-```sh
+```bash
 docker-compose up -d
+```
+## Stopper
+```bash
+docker-compose stop
 ```
