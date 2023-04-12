@@ -102,7 +102,7 @@ const getArtistes = async (req: Request, res: Result) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).send({
             error: 1,
             message: 'Une erreur est survenue lors de la récupération des artistes.'
@@ -197,7 +197,7 @@ const getArtisteById = async (req: Request, res: Result) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).send({
             error: 1,
             message: "Une erreur est survenue lors de la récupération de l'artiste."
@@ -240,7 +240,7 @@ const createArtiste = async (req: Request, res: Result) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         await t.rollback();
         res.status(500).send({
             error: 1,
@@ -252,7 +252,6 @@ const createArtiste = async (req: Request, res: Result) => {
 const editArtiste = async (req: Request, res: Result) => {
     let t;
     try {
-        console.log(req.body)
         const saison = req.headers.saison ? req.headers.saison.toLowerCase() : "";
         const db = getDbSaions(saison);
 
@@ -297,14 +296,12 @@ const editArtiste = async (req: Request, res: Result) => {
             data: artiste
         }
 
-        console.log(response)
-
         await t.commit();
 
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         await t.rollback();
         res.status(500).send({
             error: 1,
@@ -331,7 +328,7 @@ const deleteArtistes = async (req: Request, res: Result) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).send({
             error: 1,
             message: "Une erreur est survenue lors de la suppression de l'artiste."
@@ -370,7 +367,7 @@ const deleteArtisteById = async (req: Request, res: Result) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).send({
             error: 1,
             message: "Une erreur est survenue lors de la suppression de l'artiste."

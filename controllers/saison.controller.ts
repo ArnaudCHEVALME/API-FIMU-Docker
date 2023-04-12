@@ -30,7 +30,7 @@ const getSaisons = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la récupération des saisons."
@@ -65,7 +65,7 @@ const getSaisonById = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la récupération de la saison."
@@ -85,7 +85,7 @@ const createSaison = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la création de la saison."
@@ -110,7 +110,7 @@ const editSaison = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la mise à jour de la saison."
@@ -132,7 +132,7 @@ const deleteSaisons = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la suppression des saisons."
@@ -157,7 +157,7 @@ const deleteSaisonById = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la suppression de la saison."
@@ -174,7 +174,6 @@ const migrateData = async (req: Request, res: Response) => {
 
 
         currentSaison = currentSaison[1].dataValues;
-        console.log(req.body);
 
         await dbCommon.saisons.create(req.body);
 
@@ -190,7 +189,6 @@ const migrateData = async (req: Request, res: Response) => {
         for (const artiste of artistesCurrent) {
             delete artiste.dataValues.id;
             const artistePrevious = await dbPrevious.artistes.create(artiste.dataValues);
-            console.log(artiste.dataValues)
             const genres = artiste.dataValues.genres.map(genre => genre.id);
             await artistePrevious.setGenres(genres);
             const pays = artiste.dataValues.pays.map(pays => pays.id);
@@ -278,7 +276,7 @@ const migrateData = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la migration des données."

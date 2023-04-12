@@ -85,7 +85,7 @@ const getConcerts = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la récupération des concerts."
@@ -170,7 +170,7 @@ const getConcertById = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la récupération du concert."
@@ -211,7 +211,7 @@ const createConcert = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la création du concert."
@@ -226,7 +226,6 @@ const editConcert = async (req: Request, res: Response) => {
         const db = getDbSaions(saison);
 
         req.body.heure_fin = calculateHeureFin(req.body.heure_debut, req.body.duree);
-        console.log(calculateHeureFin(req.body.heure_debut, req.body.duree))
 
         if (!await isSceneFree(db, req.body.sceneId, req.body.date_debut, req.body.heure_debut, req.body.heure_fin)) {
             res.status(500).json({
@@ -257,7 +256,7 @@ const editConcert = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la modification du concert."
@@ -282,7 +281,7 @@ const deleteConcerts = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la suppression du concert."
@@ -314,7 +313,7 @@ const deleteConcertById = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la suppression du concert."
@@ -341,7 +340,7 @@ const getDates = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la récupération des dates."
@@ -379,7 +378,7 @@ const getHeureMin = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la récupération de l'heure min."
@@ -417,7 +416,7 @@ const getHeureMax = async (req: Request, res: Response) => {
         res.status(200).json(response);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).json({
             error: 1,
             message: "Une erreur est survenue lors de la récupération de l'heure max."
@@ -426,7 +425,6 @@ const getHeureMax = async (req: Request, res: Response) => {
 }
 
 const calculateHeureFin = (heure_debut: string, duree: number) => {
-    console.log(heure_debut, duree)
     let heure_fin = '';
     let h = parseInt(heure_debut.split(':')[0]);
     let m = parseInt(heure_debut.split(':')[1]);

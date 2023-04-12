@@ -24,6 +24,7 @@ import path from 'path';
 dotenv.config({
     path: path.resolve(__dirname, './.env')
 })
+const PORT = process.env.FIMU_PORT
 
 import cors from "cors";
 
@@ -54,7 +55,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:3000',
+                url: `http://localhost:${PORT}`,
                 description: 'Serveur local'
             }
         ]
@@ -98,6 +99,6 @@ app.use('*', (req, res) => {
     });
 });
 
-app.listen(process.env.FIMU_PORT, () => {
-    console.log(`Server started at port ${process.env.FIMU_PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server started at port ${PORT}`);
 });

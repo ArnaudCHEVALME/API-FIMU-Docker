@@ -8,7 +8,7 @@ const catchError = (err, res) => {
             message: "Token expiré !"
         });
     }
-    console.log(err)
+    console.error(err)
     return res.status(500).send({
         message: "Non autorisé !"
     });

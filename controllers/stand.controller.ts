@@ -131,7 +131,6 @@ const createStand = async (req: Request, res: Result) => {
 
 const editStand = async (req: Request, res: Result) => {
     try {
-        console.log(req.body)
         const saison = req.headers.saison ? req.headers.saison.toLowerCase() : "";
         const db = getDbSaions(saison);
 
@@ -153,7 +152,7 @@ const editStand = async (req: Request, res: Result) => {
         res.status(200).json(result);
     }
     catch (e) {
-        console.log(e)
+        console.error(e)
         const result = {
             error: 1,
             message: "Une erreur est survenue lors de la modification du stand."

@@ -10,7 +10,7 @@ const signup = async (req: Request, res: Response) => {
         res.status(200).send(utilisateur);
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         res.status(500).send({
             message: "Erreur lors de la création de l'utilisateur"
         });
@@ -61,7 +61,7 @@ const signin = (req, res) => {
             });
         })
         .catch((e) => {
-            console.log(e);
+            console.error(e);
             res.status(500).send({
                 message: "Erreur lors de la connexion"
             });
@@ -102,7 +102,7 @@ const refreshToken = async (req, res) => {
         });
     }
     catch (e) {
-        console.log(e);
+        console.error(e);
         return res.status(500).json({message: 'Erreur lors du rafraîchissement du token'});
     }
 }
