@@ -14,5 +14,6 @@ const dbConfig = {
         idle: 10000
     }
 }
+console.log(dbConfig);
 
 export default dbConfig;

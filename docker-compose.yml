@@ -1,15 +1,6 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:latest
-    restart: unless-stopped
-    env_file: ./.env
-    environment:
-      POSTGRES_USER: $FIMU_USER
-      POSTGRES_PASSWORD: FIMU_PASSWORD
-      POSTGRES_DB: FIMU_DB_NAME
-
   api:
     depends_on: 
       - db
@@ -24,3 +15,12 @@ services:
       FIMU_DB_NAME: $FIMU_DB_NAME
       FIMU_PORT: $FIMU_PORT
       FIMU_AUTH_SECRET: $FIMU_AUTH_SECRET
+
+  db:
+    image: postgres:latest
+    restart: always
+    env_file: ./.env
+    environment:
+      POSTGRES_USER: $FIMU_USER
+      POSTGRES_PASSWORD: $FIMU_PASSWORD
+      POSTGRES_DB: $FIMU_DB_NAME

@@ -26,11 +26,8 @@ RUN npm install --production
 # Copy the build files from the builder image
 COPY --from=builder /usr/src/app/dist ./dist
 
-# Set environment variables
-ENV PORT=3000
-
 # Expose port
-EXPOSE $PORT
+EXPOSE 3000
 
 # Start the app
 CMD ["node", "dist/server.js"]
