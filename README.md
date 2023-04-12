@@ -5,7 +5,7 @@ git clone https://github.com/ArnaudCHEVALME/API-FIMU-Docker.git
 cd API-FIMU-Docker
 ```
 
-## Créer et remplire le .env
+## Créer le .env
 ```bash
 cp .env-template .env
 ```
