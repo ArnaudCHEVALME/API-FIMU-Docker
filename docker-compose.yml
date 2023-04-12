@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   api:
+    container_name: api
     depends_on: 
       - db
     build: .
@@ -18,9 +19,15 @@ services:
 
   db:
     image: postgres:latest
+    container_name: db
     restart: always
     env_file: ./.env
     environment:
       POSTGRES_USER: $FIMU_USER
       POSTGRES_PASSWORD: $FIMU_PASSWORD
       POSTGRES_DB: $FIMU_DB_NAME
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
