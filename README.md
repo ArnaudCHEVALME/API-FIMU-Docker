@@ -14,7 +14,7 @@ cp .env-template .env
 ```bash
 docker-compose up -d
 ```
-## Stopper
+## Tout stopper et supprimer
 ```bash
-docker-compose stop
+docker-compose down
 ```
